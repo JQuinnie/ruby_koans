@@ -13,21 +13,28 @@
 # and
 #   about_triangle_project_2.rb
 #
+# def triangle(a, b, c)
+#   # WRITE THIS CODE
+#   if a == b
+#     if b == c
+#       :equilateral
+#     else
+#       :isosceles
+#     end
+#   elsif a == c
+#     :isosceles
+#   elsif b == c
+#     :isosceles
+#   else
+#     :scalene
+#   end
+# end
+
 def triangle(a, b, c)
-  # WRITE THIS CODE
-  if a == b
-    if b == c
-      :equilateral
-    else
-      :isosceles
-    end
-  elsif a == c
-    :isosceles
-  elsif b == c
-    :isosceles
-  else
-    :scalene
-  end
+  array = [a, b, c].sort #first put them in order
+  raise TriangleError if array.min <= 0 || array[0]+array[1] <= array[2] #this will help evaluate out negatives and non triangles
+  array.uniq! #this will get rid of duplicates, mutates array
+  array.length == 1 ? :equilateral: array.length == 2 ? :isosceles : :scalene #double ternary
 end
 
 # Error class used in part 2.  No need to change this code.
