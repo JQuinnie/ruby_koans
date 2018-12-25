@@ -42,10 +42,14 @@ def score(dice)
     end
   end
   if array != []
-    if array.count(1) == 3
-      result = 1000
-    elsif array.count(5) == 3
-      result = 500
+    if array.count(1) >= 3
+      one = array.count(1) - 3
+      five = array.count(5)
+      result = 1000 + one * 100 + five * 50
+    elsif array.count(5) >= 3
+      one = array.count(1)
+      five = array.count(5) - 3
+      result = 500 + one * 100 + five * 50
     elsif (array & [1, 5]).any?
       one = array.count(1)
       five = array.count(5)
